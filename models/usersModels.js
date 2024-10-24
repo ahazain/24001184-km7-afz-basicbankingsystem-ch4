@@ -20,9 +20,9 @@ class Users {
         password: data.password,
         profile: {
           create: {
-            identify_type: data.identify_type,
-            identify_number: data.identify_number,
-            address: data.address,
+            identify_type: data.profile.identify_type, // Perbaiki akses ke data.profile
+            identify_number: data.profile.identify_number, // Perbaiki akses ke data.profile
+            address: data.profile.address, // Perbaiki akses ke data.profile
           },
         },
       },
@@ -31,6 +31,7 @@ class Users {
       },
     });
   }
+
   static async putUsers(usersId, data) {
     return await prisma.user.update({
       where: { id: parseInt(usersId) },
